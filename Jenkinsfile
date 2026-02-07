@@ -11,7 +11,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 checkout scm
             }
@@ -19,20 +19,20 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'
-                sh 'npx playwright install --with-deps'
+                bat 'npm ci'
+                bat 'npx playwright install'
             }
         }
 
         stage('Run API Tests') {
             steps {
-                sh 'npm run test:api'
+                bat 'npm run test:api'
             }
         }
 
-        stage('Run UI Tests') {
+        stage('Run UI Tests (All Browsers)') {
             steps {
-                sh 'npm run test:ui'
+                bat 'npm run test:ui'
             }
         }
     }
@@ -40,6 +40,12 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+        }
+        success {
+            echo 'Pipeline passed'
+        }
+        failure {
+            echo 'Pipeline failed'
         }
     }
 }
