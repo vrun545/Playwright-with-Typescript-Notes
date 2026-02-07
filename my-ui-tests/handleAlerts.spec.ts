@@ -6,14 +6,14 @@ import { test, expect, Locator } from "@playwright/test";
 test("Simple alert", async ({ page }) => {
     await page.goto("https://letcode.in/alert");
 
-    const simpleALert: Locator = page.locator("#accept");
+    const simpleAlert: Locator = page.locator("#accept");
     page.on("dialog", async dialog => {
         console.log("Message: " + dialog.message());
         console.log("Default Value: " + dialog.defaultValue());
         console.log("Type: " + dialog.type());
         await dialog.accept();
     });
-    await simpleALert.click();
+    await simpleAlert.click();
 });
 
 
@@ -21,14 +21,14 @@ test("Simple alert", async ({ page }) => {
 test("Confirm alert", async ({ page }) => {
     await page.goto("https://letcode.in/alert");
 
-    const confirmALert: Locator = page.locator("#confirm");
+    const confirmAlert: Locator = page.locator("#confirm");
     page.on("dialog", async dialog => {
         console.log("Message: " + dialog.message());
         console.log("Default Value: " + dialog.defaultValue());
         console.log("Type: " + dialog.type());
         await dialog.dismiss();
     });
-    await confirmALert.click();
+    await confirmAlert.click();
 });
 
 

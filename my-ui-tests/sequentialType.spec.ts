@@ -1,7 +1,7 @@
 import {test, Locator, expect} from "@playwright/test";
 
 
-test("Tyep Sequentionally User Input on SearchBar", async({page}) => {
+test("Type Sequentionally User Input on Search-Bar", async({page}) => {
 
     await page.goto("https://www.flipkart.com/");
 

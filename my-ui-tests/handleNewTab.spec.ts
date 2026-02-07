@@ -14,8 +14,10 @@ test("Handling New Tab", async ({ page }) => {
     ]);
     await newPage.waitForLoadState();
 
-    // now parent tab on focus
+     // now parent tab on focus
     page.bringToFront();
 
+    // now new Tab is on focus
+    newPage.bringToFront();
 
 });
