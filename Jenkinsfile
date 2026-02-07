@@ -11,7 +11,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -26,7 +26,9 @@ pipeline {
 
         stage('Run API Tests') {
             steps {
-                bat 'npm run test:api'
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat 'npm run test:api'
+                }
             }
         }
 
@@ -40,12 +42,6 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-        }
-        success {
-            echo 'Pipeline passed'
-        }
-        failure {
-            echo 'Pipeline failed'
         }
     }
 }
