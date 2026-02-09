@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "lib": ["ES2020", "DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "types": ["node", "@playwright/test"],
+    "noEmit": true
+  },
+  "include": [
+    "playwright.config.ts",
+    "tests",
+    "api-tests",
+    "api-tests-framework",
+    "my-ui-tests",
+    "fixtures",
+    "schemas",
+    "utils"
+  ]
+}

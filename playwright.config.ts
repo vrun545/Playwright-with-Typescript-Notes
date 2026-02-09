@@ -1,9 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  fullyParallel: true,
+  fullyParallel: false,
 
-  workers: process.env.CI ? 4 : undefined,
+  workers: process.env.CI ? 1 : undefined,
 
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
